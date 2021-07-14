@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HHVM Intro &#8212; Hack Language Documentation 0.9 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating a Hack Project" href="hack.html" />
+    <link rel="prev" title="Welcome to Hack Lang Documentation’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="hack.html" title="Creating a Hack Project"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Hack Lang Documentation’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hack Language Documentation 0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">HHVM Intro</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hhvm-intro">
+<h1>HHVM Intro<a class="headerlink" href="#hhvm-intro" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="building-and-installing-from-source">
+<h2>Building and Installing from Source<a class="headerlink" href="#building-and-installing-from-source" title="Permalink to this headline">¶</a></h2>
+<p>From <a class="reference external" href="https://docs.hhvm.com/hhvm/installation/building-from-source">Installation: Building From Source</a>.</p>
+<ol class="arabic">
+<li><p>Enable <strong>src</strong> entry in /etc/apt/sources.list.d/blah-blah-hhvm.list</p></li>
+<li><p>Use apt to install build dependencies for hhvm, clone the hhvm repository, build hhvm and install it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt update &amp;&amp; apt-get build-dep hhvm-nightly
+
+git clone git://github.com/facebook/hhvm.git
+
+cd hhvm
+
+git submodule update –init –recursive
+
+cmake -DMYSQL_UNIX_SOCK_ADDR=/var/run/mysqld/mysqld.sock .
+
+make -j 4
+
+sudo make install
+</pre></div>
+</div>
+</li>
+</ol>
+<p>HHVM and its related binaries will be installed in <strong>/usr/local/bin</strong>.</p>
+<p>Note: The hhvm server/daemon executes <strong>.hh</strong> and <strong>.php</strong> files. <strong>.hh</strong> files must begin with <strong>&lt;?hh</strong>, and <strong>.hhconfig</strong> must exist in the .hh file subdir</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="nb">bin</span> <span class="n">src</span> <span class="n">tests</span>
+
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">hh_autoload</span><span class="o">.</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;roots&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;src/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;devRoots&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;tests/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;devFailureHandler&quot;</span><span class="p">:</span> <span class="s2">&quot;Facebook</span><span class="se">\\</span><span class="s2">AutoloadMap</span><span class="se">\\</span><span class="s2">HHClientFallbackHandler&quot;</span>
+<span class="p">}</span>
+
+<span class="n">composer</span> <span class="n">require</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hsl</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hhvm</span><span class="o">-</span><span class="n">autoload</span>
+<span class="n">composer</span> <span class="n">require</span> <span class="o">--</span><span class="n">dev</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hhast</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hacktest</span> <span class="n">facebook</span><span class="o">/</span><span class="n">fbexpect</span>
+
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">hhast</span><span class="o">-</span><span class="n">lint</span><span class="o">.</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;roots&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;bin/&quot;</span><span class="p">,</span> <span class="s2">&quot;src/&quot;</span><span class="p">,</span> <span class="s2">&quot;tests/&quot;</span> <span class="p">],</span>
+  <span class="s2">&quot;builtinLinters&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See <strong>hack-proj</strong> bash script.</p>
+<p><strong>vendor/bin/hh-autoload</strong> should be run to update the
+./vendor/autload.hack file that maps your classes, functions, etc, to
+the <strong>.hack</strong> file in which they are reside.</p>
+<p>RESUME
+here:https://docs.hhvm.com/hack/getting-started/starting-a-real-project</p>
+<p>TEST:</p>
+<p><strong>-p 8080</strong> is really equivalent to just <strong>-d hhvm.server.port=8080</strong>.
+Since the <strong>-m server</strong> parametert must be specified, and its use
+implies the server type is proxygen and the default source_root is
+<strong>./</strong>, explicitly specifying <strong>d hhvm.server.type=proxygen -d
+hhvm.server.source_root=./</strong> is redundant and therefore confusing to a
+new user.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HHVM Intro</a><ul>
+<li><a class="reference internal" href="#building-and-installing-from-source">Building and Installing from Source</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Hack Lang Documentation’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hack.html"
+                        title="next chapter">Creating a Hack Project</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/hhvm.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="hack.html" title="Creating a Hack Project"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Hack Lang Documentation’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Hack Language Documentation 0.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">HHVM Intro</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Kurt Krueckeberg.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.4.
+    </div>
+  </body>
+</html>
