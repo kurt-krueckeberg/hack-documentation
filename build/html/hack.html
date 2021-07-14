@@ -37,40 +37,35 @@
             
   <div class="section" id="creating-a-hack-project">
 <h1>Creating a Hack Project<a class="headerlink" href="#creating-a-hack-project" title="Permalink to this headline">¶</a></h1>
-<p>Make sure
-<a class="reference external" href="https://getcomposer.org/doc/00-intro.md#downloading-the-composer-executable">composer</a>
-is installed.</p>
-<p>See <a class="reference external" href="https://docs.hhvm.com/hack/getting-started/starting-a-real-project">Getting Started: Starting A Real
-Project</a>.
-I created <strong>hack_proj</strong>, a bash script that performs the steps discussed
-in this link:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ curl https://raw.githubusercontent.com/hhvm/hhast/master/.hhconfig &gt; .hhconfig
-$ mkdir bin src tests
+<p>Make sure <a class="reference external" href="https://getcomposer.org/doc/00-intro.md#downloading-the-composer-executable">composer</a> is installed.</p>
+<p>See <a class="reference external" href="https://docs.hhvm.com/hack/getting-started/starting-a-real-project">Getting Started: Starting A Real Project</a>. I created <strong>hack_proj</strong>, a bash script that performs
+the steps discussed in this link:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">hhvm</span><span class="o">/</span><span class="n">hhast</span><span class="o">/</span><span class="n">master</span><span class="o">/.</span><span class="n">hhconfig</span> <span class="o">&gt;</span> <span class="o">.</span><span class="n">hhconfig</span>
 
-$ cat &gt; hh_autoload.json
-{
-  &quot;roots&quot;: [
-    &quot;src/&quot;
-  ],
-  &quot;devRoots&quot;: [
-    &quot;tests/&quot;
-  ],
-  &quot;devFailureHandler&quot;: &quot;Facebook\\AutoloadMap\\HHClientFallbackHandler&quot;
-}
+<span class="n">mkdir</span> <span class="nb">bin</span> <span class="n">src</span> <span class="n">tests</span>
 
-$ composer require hhvm/hsl hhvm/hhvm-autoload
-$ composer require --dev hhvm/hhast hhvm/hacktest facebook/fbexpect
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">hh_autoload</span><span class="o">.</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;roots&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;src/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;devRoots&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;tests/&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;devFailureHandler&quot;</span><span class="p">:</span> <span class="s2">&quot;Facebook</span><span class="se">\\</span><span class="s2">AutoloadMap</span><span class="se">\\</span><span class="s2">HHClientFallbackHandler&quot;</span>
+<span class="p">}</span>
 
-cat &gt; hhast-lint.json
-{
-  &quot;roots&quot;: [ &quot;bin/&quot;, &quot;src/&quot;, &quot;tests/&quot; ],
-  &quot;builtinLinters&quot;: &quot;all&quot;
-}
+<span class="n">composer</span> <span class="n">require</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hsl</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hhvm</span><span class="o">-</span><span class="n">autoload</span>
+<span class="n">composer</span> <span class="n">require</span> <span class="o">--</span><span class="n">dev</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hhast</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hacktest</span> <span class="n">facebook</span><span class="o">/</span><span class="n">fbexpect</span>
+
+<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">hhast</span><span class="o">-</span><span class="n">lint</span><span class="o">.</span><span class="n">json</span>
+<span class="p">{</span>
+  <span class="s2">&quot;roots&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;bin/&quot;</span><span class="p">,</span> <span class="s2">&quot;src/&quot;</span><span class="p">,</span> <span class="s2">&quot;tests/&quot;</span> <span class="p">],</span>
+  <span class="s2">&quot;builtinLinters&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p><strong>vendor/bin/hh-autoload</strong> should be run to update the
-./vendor/autoload.hack file which maps your classes, functions, etc, to
-the correct <strong>.hack</strong> file.</p>
+<p><strong>vendor/bin/hh-autoload</strong> should be run to update the ./vendor/autoload.hack file which maps your classes, functions, etc, to the correct <strong>.hack</strong> file.</p>
 </div>
 
 

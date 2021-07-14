@@ -21,6 +21,9 @@ project = 'Hack Language Documentation'
 copyright = '2021, Kurt Krueckeberg'
 author = 'Kurt Krueckeberg'
 
+# Permit ..todo::
+todo_include_todos = 'true'
+
 # The full version, including alpha/beta/rc tags
 release = '0.9'
 
@@ -31,7 +34,10 @@ release = '0.9'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+   'sphinx.ext.todo'
 ]
+
+todo_include_todos=True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

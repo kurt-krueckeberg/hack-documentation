@@ -65,43 +65,44 @@ sudo make install
 </li>
 </ol>
 <p>HHVM and its related binaries will be installed in <strong>/usr/local/bin</strong>.</p>
-<p>Note: The hhvm server/daemon executes <strong>.hh</strong> and <strong>.php</strong> files. <strong>.hh</strong> files must begin with <strong>&lt;?hh</strong>, and <strong>.hhconfig</strong> must exist in the .hh file subdir</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="nb">bin</span> <span class="n">src</span> <span class="n">tests</span>
-
-<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">hh_autoload</span><span class="o">.</span><span class="n">json</span>
-<span class="p">{</span>
-  <span class="s2">&quot;roots&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&quot;src/&quot;</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;devRoots&quot;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="s2">&quot;tests/&quot;</span>
-  <span class="p">],</span>
-  <span class="s2">&quot;devFailureHandler&quot;</span><span class="p">:</span> <span class="s2">&quot;Facebook</span><span class="se">\\</span><span class="s2">AutoloadMap</span><span class="se">\\</span><span class="s2">HHClientFallbackHandler&quot;</span>
-<span class="p">}</span>
-
-<span class="n">composer</span> <span class="n">require</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hsl</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hhvm</span><span class="o">-</span><span class="n">autoload</span>
-<span class="n">composer</span> <span class="n">require</span> <span class="o">--</span><span class="n">dev</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hhast</span> <span class="n">hhvm</span><span class="o">/</span><span class="n">hacktest</span> <span class="n">facebook</span><span class="o">/</span><span class="n">fbexpect</span>
-
-<span class="n">cat</span> <span class="o">&gt;</span> <span class="n">hhast</span><span class="o">-</span><span class="n">lint</span><span class="o">.</span><span class="n">json</span>
-<span class="p">{</span>
-  <span class="s2">&quot;roots&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;bin/&quot;</span><span class="p">,</span> <span class="s2">&quot;src/&quot;</span><span class="p">,</span> <span class="s2">&quot;tests/&quot;</span> <span class="p">],</span>
-  <span class="s2">&quot;builtinLinters&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span>
-<span class="p">}</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The hhvm server/daemon executes <strong>.hh</strong> and <strong>.php</strong> files. <strong>.hh</strong> files must begin with <strong>&lt;?hh</strong>, and <strong>.hhconfig</strong> must exist in the .hh file subdir</p>
+</div>
+</div>
+<div class="section" id="starting-hhvm">
+<h2>Starting HHVM<a class="headerlink" href="#starting-hhvm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="proxygen-server">
+<h3>Proxygen Server<a class="headerlink" href="#proxygen-server" title="Permalink to this headline">¶</a></h3>
+<p>This is the built-in hhvm server. It will execute under the user who launched it. It is started:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hhvm</span> <span class="o">-</span><span class="n">m</span> <span class="n">server</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8080</span>
 </pre></div>
 </div>
-<p>See <strong>hack-proj</strong> bash script.</p>
-<p><strong>vendor/bin/hh-autoload</strong> should be run to update the
-./vendor/autload.hack file that maps your classes, functions, etc, to
-the <strong>.hack</strong> file in which they are reside.</p>
-<p>RESUME
-here:https://docs.hhvm.com/hack/getting-started/starting-a-real-project</p>
-<p>TEST:</p>
-<p><strong>-p 8080</strong> is really equivalent to just <strong>-d hhvm.server.port=8080</strong>.
-Since the <strong>-m server</strong> parametert must be specified, and its use
-implies the server type is proxygen and the default source_root is
-<strong>./</strong>, explicitly specifying <strong>d hhvm.server.type=proxygen -d
-hhvm.server.source_root=./</strong> is redundant and therefore confusing to a
-new user.</p>
+<p>The mode <strong>server</strong> implies proxygen server and the prt it listens on is 8080. <strong>-p 8080</strong> is really equivalent to specifying <strong>-d hhvm.server.port=8080</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hhvm</span> <span class="o">-</span><span class="n">m</span> <span class="n">server</span> <span class="o">-</span><span class="n">d</span> <span class="n">hhvm</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span>
+</pre></div>
+</div>
+<p>The <strong>-m</strong> parameter is required. The default source root, where the .php and .hh files reside, is by default the same subdirectory from which hhvm was started. To change it, do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hhvm</span> <span class="o">-</span><span class="n">m</span> <span class="n">server</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8080</span> <span class="o">-</span><span class="n">d</span> <span class="n">hhvm</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">source_root</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">test</span>
+</pre></div>
+</div>
+<p>The port can also be changed using this -d parameter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hhvm</span> <span class="o">-</span><span class="n">m</span> <span class="n">server</span> <span class="o">-</span><span class="n">d</span> <span class="n">hhvm</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">port</span><span class="o">=</span><span class="mi">8080</span> <span class="o">-</span><span class="n">d</span> <span class="n">hhvm</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">source_root</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">test</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="daemon">
+<h3>Daemon<a class="headerlink" href="#daemon" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="administrative-server">
+<h3>Administrative Server<a class="headerlink" href="#administrative-server" title="Permalink to this headline">¶</a></h3>
+<p>This is not a separate mode like proxygen, daemon, or command line execution, rather it adds the ability to control the server, when run as a daemon or proxygen server.
+You do this using curl.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>flesh out later</p>
+</div>
+</div>
 </div>
 </div>
 
@@ -116,6 +117,12 @@ new user.</p>
   <ul>
 <li><a class="reference internal" href="#">HHVM Intro</a><ul>
 <li><a class="reference internal" href="#building-and-installing-from-source">Building and Installing from Source</a></li>
+<li><a class="reference internal" href="#starting-hhvm">Starting HHVM</a><ul>
+<li><a class="reference internal" href="#proxygen-server">Proxygen Server</a></li>
+<li><a class="reference internal" href="#daemon">Daemon</a></li>
+<li><a class="reference internal" href="#administrative-server">Administrative Server</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

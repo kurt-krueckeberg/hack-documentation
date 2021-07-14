@@ -26,46 +26,38 @@ From `Installation: Building From Source <https://docs.hhvm.com/hhvm/installatio
 
 HHVM and its related binaries will be installed in **/usr/local/bin**.
 
-Note: The hhvm server/daemon executes **.hh** and **.php** files. **.hh** files must begin with **<?hh**, and **.hhconfig** must exist in the .hh file subdir
- 
-::
+.. note:: The hhvm server/daemon executes **.hh** and **.php** files. **.hh** files must begin with **<?hh**, and **.hhconfig** must exist in the .hh file subdir
 
-    mkdir bin src tests
- 
-    cat > hh_autoload.json
-    {
-      "roots": [
-        "src/"
-      ],
-      "devRoots": [
-        "tests/"
-      ],
-      "devFailureHandler": "Facebook\\AutoloadMap\\HHClientFallbackHandler"
-    }
- 
-    composer require hhvm/hsl hhvm/hhvm-autoload
-    composer require --dev hhvm/hhast hhvm/hacktest facebook/fbexpect
- 
-    cat > hhast-lint.json
-    {
-      "roots": [ "bin/", "src/", "tests/" ],
-      "builtinLinters": "all"
-    }
+Starting HHVM 
+-------------
 
-See **hack-proj** bash script.
+Proxygen Server
+~~~~~~~~~~~~~~~
 
-**vendor/bin/hh-autoload** should be run to update the
-./vendor/autload.hack file that maps your classes, functions, etc, to
-the **.hack** file in which they are reside.
+This is the built-in hhvm server. It will execute under the user who launched it. It is started::
 
-RESUME
-here:https://docs.hhvm.com/hack/getting-started/starting-a-real-project
+    hhvm -m server -p 8080
 
-TEST:
+The mode **server** implies proxygen server and the prt it listens on is 8080. **-p 8080** is really equivalent to specifying **-d hhvm.server.port=8080**::
 
-**-p 8080** is really equivalent to just **-d hhvm.server.port=8080**.
-Since the **-m server** parametert must be specified, and its use
-implies the server type is proxygen and the default source_root is
-**./**, explicitly specifying **d hhvm.server.type=proxygen -d
-hhvm.server.source_root=./** is redundant and therefore confusing to a
-new user.
+    hhvm -m server -d hhvm.server.port=8080
+
+The **-m** parameter is required. The default source root, where the .php and .hh files reside, is by default the same subdirectory from which hhvm was started. To change it, do::
+
+    hhvm -m server -p 8080 -d hhvm.server.source_root=/var/www/test
+
+The port can also be changed using this -d parameter::
+
+    hhvm -m server -d hhvm.server.port=8080 -d hhvm.server.source_root=/var/www/test
+
+Daemon
+~~~~~~
+
+
+Administrative Server
+~~~~~~~~~~~~~~~~~~~~~
+
+This is not a separate mode like proxygen, daemon, or command line execution, rather it adds the ability to control the server, when run as a daemon or proxygen server.
+You do this using curl.
+
+.. todo:: flesh out later
