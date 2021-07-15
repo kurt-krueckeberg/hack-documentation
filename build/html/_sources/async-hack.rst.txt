@@ -5,14 +5,18 @@ Hack Cooperative Multitasking
 
 Free Articles:
 
-* `Series of Articles on Operating Instructions <https://www.geeksforgeeks.org/operating-systems/?ref=lbp>`_.
-* `All about Operating System - Kernel, Scheduling and More <https://www.krivalar.com/OS>`_.
-* `Process Threads and Sychronization <http://www.zrzahid.com/process-threads-and-synchronization/>`_.
 * `Pre-emptive Multitasking <https://brennan.io/2020/02/08/sos-preemptive-multitasking/>`_.
+* `All about Operating System - Kernel, Scheduling and More <https://www.krivalar.com/OS>`_.
 * `Operating System Concepts [900 page PDF] <https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxtYWhhcmFzaW00MnxneDo1NzIwYmJjYWQzMDRlMTI2>`_
 * `Operating System [Succinct; from  Online Study of Computer Science Eng.] <http://onlinecse.com/operating-system-context-switch/>`_.
 * `Operatering System Processes <https://cps.cse.uconn.edu/wp-content/uploads/sites/2687/2019/09/ch3.pdf>`_.
+* `Process Threads and Sychronization <http://www.zrzahid.com/process-threads-and-synchronization/>`_.
 * `Process Scheduling (in context of OSes) <https://www.baeldung.com/cs/process-scheduling>`_.
+* `Series of Articles on Operating Instructions <https://www.geeksforgeeks.org/operating-systems/?ref=lbp>`_.
+
+Others no yet reviewed:
+
+* `Video Course on Operating Systems: Process Management, Thread, CPU Scheduling, Process Synchronization <https://videolecture.in/course/operating-system/>`_.
 
 Instead of pre-emptive multitasking, Hack supports cooperative multitasking, allowing functions to execute asynchronously freeing the main calling code to do other things. When you call, for example, 
 

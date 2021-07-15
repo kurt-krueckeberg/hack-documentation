@@ -12,6 +12,7 @@ Welcome to Hack Lang Documentation's documentation!
 
    hhvm.rst
    hack.rst
+   async-hack.rst
 
 
 Indices and tables
