@@ -7,5 +7,7 @@ Instead of pre-emptive multitasking, Hack supports cooperative multitasking, all
 
 These functions must be prefixed with  the **async** keyword.
 
+Articles on Multitasking:
 
-For an excellent explanation of pre-emptive multitasking, see `Pre-emptive Multitasking <https://brennan.io/2020/02/08/sos-preemptive-multitasking/>`_.
+* `Pre-emptive Multitasking <https://brennan.io/2020/02/08/sos-preemptive-multitasking/>`_.
+* `Async - Cooperative Multitasking for Hack <https://hhvm.com/blog/7091/async-cooperative-multitasking-for-hack>`_.
