@@ -1,7 +1,11 @@
 Hack Cooperative Multitasking
 =============================
 
-Hack does not support pre-emptive multitasking, but it does supports cooperative multitasking by allowing functions, which must be prefixed with  the **async** keyword, to run asynchronously from their caller. Such functions are most often needed to hide I/O latency.
+Instead of pre-emptive multitasking, Hack supports cooperative multitasking, allowing functions to execute asynchronously from their caller. Such functions can are most often needed, for example, to hide I/O latency.
+
+.. todo:: Provide an practical example showing the syntax of async functions
+
+These functions must be prefixed with  the **async** keyword.
 
 
 For an excellent explanation of pre-emptive multitasking, see `Pre-emptive Multitasking <https://brennan.io/2020/02/08/sos-preemptive-multitasking/>`_.
