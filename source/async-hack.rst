@@ -5,10 +5,11 @@ Hack Cooperative Multitasking
 
 Free Articles:
 
-* `Series of Articles on Operating Instructions <https://www.geeksforgeeks.org/operating-systems/?ref=lbp>`_.
+* From GeekforGeeks **Operating Systems** Series:
+   * `Difference between Multiprogramming, Multitasking, Multithreading and Multiprocessing <https://www.geeksforgeeks.org/difference-between-multitasking-multithreading-and-multiprocessing/>`_
+   * `Process Management Section <https://www.geeksforgeeks.org/introduction-of-process-management/>`_.
 * `All about Operating System - Kernel, Scheduling and More <https://www.krivalar.com/OS>`_.
 * `Process Threads and Sychronization <http://www.zrzahid.com/process-threads-and-synchronization/>`_.
-* `Pre-emptive Multitasking <https://brennan.io/2020/02/08/sos-preemptive-multitasking/>`_.
 * `Operating System Concepts [900 page PDF] <https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxtYWhhcmFzaW00MnxneDo1NzIwYmJjYWQzMDRlMTI2>`_
 * `Operating System [Succinct; from  Online Study of Computer Science Eng.] <http://onlinecse.com/operating-system-context-switch/>`_.
 * `Operatering System Processes <https://cps.cse.uconn.edu/wp-content/uploads/sites/2687/2019/09/ch3.pdf>`_.
