@@ -8,7 +8,7 @@ Free Articles:
 * From GeekforGeeks **Operating Systems** Series:
    * `Difference between Multiprogramming, Multitasking, Multithreading and Multiprocessing <https://www.geeksforgeeks.org/difference-between-multitasking-multithreading-and-multiprocessing/>`_
    * `Process Management Section <https://www.geeksforgeeks.org/introduction-of-process-management/>`_.
-* From Krivalar Tutorials All about "Operating System - Kernel, Scheduling and More":
+* From Krivalar Tutorials All about **Operating System - Kernel, Scheduling and More**:
    * `All about Operating System - Kernel, Scheduling and More <https://www.krivalar.com/OS>`_.
 * `Process Threads and Sychronization <http://www.zrzahid.com/process-threads-and-synchronization/>`_.
 * `Operating System Concepts [900 page PDF] <https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxtYWhhcmFzaW00MnxneDo1NzIwYmJjYWQzMDRlMTI2>`_
