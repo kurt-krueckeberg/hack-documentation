@@ -8,7 +8,7 @@ From `Installation: Building From Source <https://docs.hhvm.com/hhvm/installatio
 
 1. Enable **src** entry in /etc/apt/sources.list.d/blah-blah-hhvm.list
 
-2. Use apt to install build dependencies for hhvm, clone the hhvm repository, build hhvm and install it::
+2. Install build dependencies for hhvm, clone its repository, build and install::
 
     sudo apt update && apt-get build-dep hhvm-nightly 
 
@@ -20,13 +20,19 @@ From `Installation: Building From Source <https://docs.hhvm.com/hhvm/installatio
 
     cmake -DMYSQL_UNIX_SOCK_ADDR=/var/run/mysqld/mysqld.sock .
 
-    make -j 4 
+    make -j 4 <where 4 is the number of threads. Note: This can increase memory usage significantly.> 
 
     sudo make install
 
-HHVM and its related binaries will be installed in **/usr/local/bin**.
+HHVM and its related binaries will be installed in **/usr/local/bin**. I am not sure where the link libraries are installed.
 
-.. note:: The hhvm server/daemon executes **.hh** and **.php** files. **.hh** files must begin with **<?hh**, and **.hhconfig** must exist in the .hh file subdir
+Installing and Using the Docker Container Version
+-------------------------------------------------
+
+See `InstallationL Docker <https://docs.hhvm.com/hhvm/installation/docker>`_ and this Docker `Orientation and setup <https://docs.docker.com/get-started/>`_.
+
+
+.. note:: The hhvm server, daemon, etc., executes **.hh** and **.php** files. **.hh** files must begin with **<?hh**, and **.hhconfig** must exist in the .hh file subdir
 
 Starting HHVM 
 -------------

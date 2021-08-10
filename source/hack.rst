@@ -1,3 +1,17 @@
+Installing the vim-hack plugin for Vim
+--------------------------------------
+
+First, to enable vim8-plugin support in vim (as described in the youtube video `How to install ANY Vim plugin with Vim 8+ Packages <https://www.youtube.com/watch?v=XIxsD7l4zww&t=108s>`_) add 'packloadall' to ~/.vimrc. Next, create this subdirectory structure:
+
+    ~$ mkdir -p .vim/pack/plugins/start
+
+Then to use a vim8-compatible plugin, clone it into the **start** subdirectory about
+
+    ~$ git clone https://github.com/hhvm/vim-hack.git ~/.vim/pack/plugins/start/vim-hack
+    ~$ git clone https://github.com/w0rp/ale.git     ~/.vim/pack/plugins/start/ale
+
+.. note:: You can tell that vim-hack works by adding hack code to .hack file. The Syntax -> File Types still won't display "Hack" under H. 
+
 Creating a Hack Project
 -----------------------
 

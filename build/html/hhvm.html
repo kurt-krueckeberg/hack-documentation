@@ -46,7 +46,7 @@
 <p>From <a class="reference external" href="https://docs.hhvm.com/hhvm/installation/building-from-source">Installation: Building From Source</a>.</p>
 <ol class="arabic">
 <li><p>Enable <strong>src</strong> entry in /etc/apt/sources.list.d/blah-blah-hhvm.list</p></li>
-<li><p>Use apt to install build dependencies for hhvm, clone the hhvm repository, build hhvm and install it:</p>
+<li><p>Install build dependencies for hhvm, clone its repository, build and install:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo apt update &amp;&amp; apt-get build-dep hhvm-nightly
 
 git clone git://github.com/facebook/hhvm.git
@@ -57,17 +57,21 @@ git submodule update –init –recursive
 
 cmake -DMYSQL_UNIX_SOCK_ADDR=/var/run/mysqld/mysqld.sock .
 
-make -j 4
+make -j 4 &lt;where 4 is the number of threads. Note: This can increase memory usage significantly.&gt;
 
 sudo make install
 </pre></div>
 </div>
 </li>
 </ol>
-<p>HHVM and its related binaries will be installed in <strong>/usr/local/bin</strong>.</p>
+<p>HHVM and its related binaries will be installed in <strong>/usr/local/bin</strong>. I am not sure where the link libraries are installed.</p>
+</div>
+<div class="section" id="installing-and-using-the-docker-container-version">
+<h2>Installing and Using the Docker Container Version<a class="headerlink" href="#installing-and-using-the-docker-container-version" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="https://docs.hhvm.com/hhvm/installation/docker">InstallationL Docker</a> and this Docker <a class="reference external" href="https://docs.docker.com/get-started/">Orientation and setup</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The hhvm server/daemon executes <strong>.hh</strong> and <strong>.php</strong> files. <strong>.hh</strong> files must begin with <strong>&lt;?hh</strong>, and <strong>.hhconfig</strong> must exist in the .hh file subdir</p>
+<p>The hhvm server, daemon, etc., executes <strong>.hh</strong> and <strong>.php</strong> files. <strong>.hh</strong> files must begin with <strong>&lt;?hh</strong>, and <strong>.hhconfig</strong> must exist in the .hh file subdir</p>
 </div>
 </div>
 <div class="section" id="starting-hhvm">
@@ -117,6 +121,7 @@ You do this using curl.</p>
   <ul>
 <li><a class="reference internal" href="#">HHVM Intro</a><ul>
 <li><a class="reference internal" href="#building-and-installing-from-source">Building and Installing from Source</a></li>
+<li><a class="reference internal" href="#installing-and-using-the-docker-container-version">Installing and Using the Docker Container Version</a></li>
 <li><a class="reference internal" href="#starting-hhvm">Starting HHVM</a><ul>
 <li><a class="reference internal" href="#proxygen-server">Proxygen Server</a></li>
 <li><a class="reference internal" href="#daemon">Daemon</a></li>

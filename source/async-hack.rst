@@ -5,11 +5,16 @@ Hack Cooperative Multitasking
 
 Free Articles:
 
-* From GeekforGeeks **Operating Systems** Series:
+* GeekforGeeks **Operating Systems** articles series:
    * `Difference between Multiprogramming, Multitasking, Multithreading and Multiprocessing <https://www.geeksforgeeks.org/difference-between-multitasking-multithreading-and-multiprocessing/>`_
    * `Process Management Section <https://www.geeksforgeeks.org/introduction-of-process-management/>`_.
-* From Krivalar Tutorials All about **Operating System - Kernel, Scheduling and More**:
-   * `All about Operating System - Kernel, Scheduling and More <https://www.krivalar.com/OS>`_.
+* Krivalar Tutorials: **Operating System - Kernel, Scheduling and More**:
+   * `https://www.krivalar.com/OS-CPU-scheduling <https://www.krivalar.com/OS-CPU-scheduling>`_.
+
+   Memory Model-Related: 
+
+   * `.text .data .bss heap stack and Where in memory are stored variables of C program <https://ggirjau.com/text-data-bss-heap-stack-and-where-in-memory-are-stored-variables-of-c-program/>`_
+   * `Memory Management: Stack and Heap <https://icarus.cs.weber.edu/~dab/cs1410/textbook/4.Pointers/memory.html>`_
 * `Process Threads and Sychronization <http://www.zrzahid.com/process-threads-and-synchronization/>`_.
 * `Operating System Concepts [900 page PDF] <https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxtYWhhcmFzaW00MnxneDo1NzIwYmJjYWQzMDRlMTI2>`_
 * `Operating System [Succinct; from  Online Study of Computer Science Eng.] <http://onlinecse.com/operating-system-context-switch/>`_.
